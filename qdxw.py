@@ -4,6 +4,8 @@
 # @email : buzhi985@qq.com
 # @file : main.py
 # @software: pycharm
+# cron: 29 6 * * *
+# new Env('青岛新闻');
 import requests
 
 headers = {
