@@ -9,21 +9,27 @@
 # new Env('骁友会');
 import random
 import time
-
+from os import environ
 import requests
+ck = environ.get("xyhCK") if environ.get("xyhCK") else ""
 
-headers = {
-    "userId": "1214202",
-    "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "sessionKey": "7l/lz5X2u+g9+fKXZbmXQQ==",
-    "openId": "o2jYV5YwiTsMzcuby9hjR5Vu-j7I",
-    "timestamp": "1690878767337",
-    "requestId": "f98d09ba1e5f4730946687ad0bb04d28",
-    "sign": "4effbe41461da5708ec1bb1f0b6143a5",
-    "Accept-Encoding": "gzip,compress,br,deflate",
-    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.29(0x18001d38) NetType/WIFI Language/en",
-    "Referer": "https://servicewechat.com/wx026c06df6adc5d06/327/page-frame.html"
-}
+if ck == "":
+    pass
+else:
+    ck_list = ck.split("#")
+
+    headers = {
+        "userId": ck_list[0],
+        "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "sessionKey": ck_list[1],
+        "openId": "o2jYV5YwiTsMzcuby9hjR5Vu-j7I",
+        "timestamp": "1690878767337",
+        "requestId": "f98d09ba1e5f4730946687ad0bb04d28",
+        "sign": "4effbe41461da5708ec1bb1f0b6143a5",
+        "Accept-Encoding": "gzip,compress,br,deflate",
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.29(0x18001d38) NetType/WIFI Language/en",
+        "Referer": "https://servicewechat.com/wx026c06df6adc5d06/327/page-frame.html"
+    }
 
 
 def signin():
@@ -51,7 +57,7 @@ def shareart():
     url = "https://qualcomm.growthideadata.com/qualcomm-app/api/article/shareDaily"
     data = {
         "articleId":"7947",
-        "userId":"1214202"
+        "userId":ck_list[0]
     }
     rep = requests.post(url,headers=headers,data=data).json()
     print(rep)
@@ -60,7 +66,7 @@ def rankLi():
     """每月一次"""
     url="https://qualcomm.growthideadata.com/qualcomm-app/api/rankingMonthly/rankingList"
     data = {
-        "userId":"1214202"
+        "userId":ck_list[0]
     }
     rep = requests.post(url,headers=headers,data=data).json()
     print(rep)
@@ -75,7 +81,7 @@ def readart():
     url = "https://qualcomm.growthideadata.com/qualcomm-app/api/article/enterReadDaily"
     data = {
         "articleId":"7947",
-        "userId":"1214202"
+        "userId":ck_list[0]
     }
     rep = req.post(url,headers=headers,data=data).json()
     print(rep)
@@ -100,7 +106,7 @@ def readvideo():
     url = "https://qualcomm.growthideadata.com/qualcomm-app/api/article/enterReadDaily"
     data = {
         "articleId": "7884",
-        "userId": "1214202"
+        "userId": ck_list[0]
     }
     rep = req.post(url, headers=headers, data=data).json()
     print(rep)
@@ -110,9 +116,12 @@ def readvideo():
     print(rep)
 
 if __name__ == '__main__':
-    signin()
-    luckdraw()
-    artlike()
-    shareart()
-    readart()
-    readvideo()
+    if ck=="":
+        pass
+    else:
+        signin()
+        luckdraw()
+        artlike()
+        shareart()
+        readart()
+        readvideo()

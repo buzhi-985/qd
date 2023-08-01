@@ -6,9 +6,10 @@
 # @software: pycharm
 # cron: 50 6 * * *
 # new Env('红牛');
-import random
+from os import environ
 import requests
 
+hnck = environ.get("hnCK") if environ.get("hnCK") else ""
 headers = {
     "content-type": "application/json;charset=UTF-8",
     "componentSend": "1",
@@ -19,7 +20,7 @@ headers = {
     "appPublishType": "1",
 
     "HH-CI": "saas-wechat-app",
-    "Authorization": "bearer ca81d101-f1c5-4bb6-b33c-1315d9dca182",
+    "Authorization": hnck,
 
     "Accept-Encoding": "gzip,compress,br,deflate",
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.29(0x18001d38) NetType/WIFI Language/en",
@@ -34,4 +35,7 @@ def signin():
     print(rep)
 
 if __name__ == '__main__':
-    signin()
+    if hnck=="":
+        print("请设置红牛CK")
+    else:
+        signin()

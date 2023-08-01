@@ -10,9 +10,11 @@
 import time
 import requests
 import random
+from os import environ
 
+ck = environ.get("jhdCK") if environ.get("jhdCK") else ""
 headers = {
-    "Cookie": "SERVERID=594b3f5153c1147b39af6db84ed83aab|1690517005|1690516999; aliyungf_tc=e7c9747289cde892b18cc3a1567223fee9dc64367fb757fd4a9af1f3c2a452d8; acw_tc=781bad4d16905162468688833e320dba6e879f52bedb83c9e563c4789df2dd",
+    "Cookie": ck,
     "User-Agent": "jiao hui dian xin wen/8.0.49 (iPhone; iOS 15.0; Scale/2.00)",
     "Accept-Language": "en-CN;q=1, zh-Hans-CN;q=0.9, zh-Hant-CN;q=0.8",
 }
@@ -93,6 +95,9 @@ def share(aid):
 
 
 if __name__ == '__main__':
-    sigin()
-    getaid()
-    sigin()
+    if ck=="":
+        pass
+    else:
+        sigin()
+        getaid()
+        sigin()

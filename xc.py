@@ -9,8 +9,8 @@ export xchd='XXXXXXX'
 # new Env('喜茶签到');
 from os import environ
 import requests
-# xchd = environ.get("xchd") if environ.get("xchd") else ""
-xchd = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3ODI3ODM4NiIsInVzZXJfbWFpbl9pZCI6OTUyMzIzMDUsImNoYW5uZWwiOiJXIiwic291cmNlIjoiYXBpIiwiaXNfZ3Vlc3QiOmZhbHNlLCJsYWJlbCI6ImNsaWVudDp3ZWFwcCIsImlhdCI6MTY5MDg3NzI1MywibmJmIjoxNjkwODc3MjUzLCJleHAiOjE2OTA5NjM2NTMsImlzcyI6ImhleXRlYSJ9.qoxIizZaMxYbOvmRk2pk0abT0UGqkq0z4qNda1sOYyc"
+xchd = environ.get("xcCK") if environ.get("xcCK") else ""
+
 def qd():
   url= 'https://vip.heytea.com/api/service-member/vip/task/award/114'
   headers= {
@@ -39,4 +39,7 @@ def qd():
 
 
 if __name__=="__main__":
-  qd()
+  if xchd=="":
+    print("请设置喜茶CK")
+  else:
+    qd()
