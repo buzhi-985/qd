@@ -3,9 +3,10 @@
 域名：vip.heytea.com
 请求头：Authorization:XXXXXXX
 export xchd='XXXXXXX'
+
+"""
 # cron: 40 7 * * *
 # new Env('喜茶签到');
-"""
 from os import environ
 import requests
 # xchd = environ.get("xchd") if environ.get("xchd") else ""
