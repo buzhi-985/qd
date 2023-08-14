@@ -29,9 +29,11 @@ headers = {
 
 
 def signin():
-    url = "https://xiaodian.miyatech.com/api/coupon/auth/signIn"
-    data = {"miniappId":197}
-    rep = requests.post(url,headers=headers,json=data).json()
+    url = "https://xiaodian.miyatech.com/api/coupon/auth/signIn/homePage?miniappId=197"
+    # data = {}
+    rep = requests.get(url,headers=headers).json()
+    if (rep["code"]!=200):
+        print("请更新红牛CK")
     print(rep)
 
 if __name__ == '__main__':

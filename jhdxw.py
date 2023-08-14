@@ -24,7 +24,18 @@ def sigin():
     url = "https://japi.xhby.net/v4/api/have_signin?" \
           "token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA5MVwvdjRcL2FwaVwvcXVlcnlTZW5kRGV0YWlsc1JlZ2lzdGVyIiwiaWF0IjoxNjc2MTA4NjczLCJleHAiOjEzNzcyMTA4NjczLCJuYmYiOjE2NzYxMDg2NzMsImp0aSI6InpsanB5QVM2NWlhaW41akciLCJzdWIiOiIxNzJhNGVhMmUxMmI0YTAxYjdmNTEyYjA0MTQ0ZmUzYiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.bBMD5EAdzdHkXA3Ya-VXzRwao3NL4wJjNrqfjrlIUmQ"
     rep = requests.get(url, headers=headers).json()
-    print(rep["data"]["user_score"])
+
+    score =rep["data"]["user_score"]
+    count_praise = rep["data"]['praise_count']
+    count_share = rep["data"]['share_count']
+    count_discuss = rep["data"]['discuss_count']
+    ci_discuss = rep["data"]['discuss_times']
+    ci_praise = rep["data"]['praise_times']
+    ci_share = rep["data"]['share_times']
+
+
+    return score,count_praise,count_share,count_discuss,ci_discuss,ci_praise,ci_share
+
 
 
 def parise(aid):
@@ -44,7 +55,7 @@ def parise(aid):
 def comment(aid):
     url = f"https://japi.xhby.net/v4/api/article/{aid}/comments"
     comment_list = ["中国共产党万岁", "人民万岁", "我将无我，不负人民", "魅力中国", "美丽中国", "牢记使命，砥砺前行", "又学到知识啦", "开拓眼界了", "意味深长，值得深思"]
-    a = random.randint(0, 9)
+    a = random.randint(0, 8)
     data = {
         "content": comment_list[a],
         # "latitude":"0.000000",
@@ -57,9 +68,9 @@ def comment(aid):
     pass
 
 
-def getaid():
-    i = 0
-    comment_ci = 0
+def getaid(count_praise,count_share,count_discuss,ci_discuss,ci_praise,ci_share):
+    i = count_praise
+    comment_ci = count_discuss
     for j in range(2):
         c_id = random.randint(9, 12)
         if c_id == 11:
@@ -71,15 +82,16 @@ def getaid():
         for it in rep:
             parise(it["id"])
             time.sleep(1)
-            if comment_ci < 6:
+            if comment_ci <= ci_discuss:
                 comment(it["id"])
                 time.sleep(1)
+            if count_share <= ci_share:
                 share(it["id"])
                 comment_ci += 1
             i += 1
-            if i == 30:
+            if i == ci_praise: # 到达点赞任务数
                 break
-            time.sleep(1)
+            # time.sleep(1)
 
 
 def share(aid):
@@ -98,6 +110,8 @@ if __name__ == '__main__':
     if ck=="":
         pass
     else:
-        sigin()
-        getaid()
-        sigin()
+        score,count_praise,count_share,count_discuss,ci_discuss,ci_praise,ci_share = sigin()
+        print(f"start.. 用户积分为{score}")
+        getaid(count_praise,count_share,count_discuss,ci_discuss,ci_praise,ci_share)
+        score,count_praise,count_share,count_discuss,ci_discuss,ci_praise,ci_share = sigin()
+        print(f"end.. 用户积分为{score}")

@@ -35,6 +35,8 @@ def qd():
     'Accept-Encoding': 'gzip, deflate',
   }
   rep = requests.post(url,headers=headers).json()
+  if (rep["code"] != 200):
+    print("请更新喜茶CK")
   print(rep)
 
 
