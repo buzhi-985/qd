@@ -96,14 +96,12 @@ def month():
 
 def test():
     # 每日签到
-    url = "https://lyh.lncmcc.com/huodong-portal/lnlyh/familysignin/sign?actNo=sign01" \
-          "&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRO0EMSMyTeUWN67CYn-Pq4sxnDrzWYNzlR_xKWTCyr-BrZ9YXNtMUyDgr08UUgkWw88gjRN32ZId3zycqf2PP0OdBfjsHysw4EUxQtCDbDOQ-t1kMwIPFpeHLb6z3DccaOAppo_OWR5Wk8qf1_2NBkkIZYjHocw3W6heL00QpjzQ" \
-          "&shopId=" \
+    url = "https://lyh.lncmcc.com/huodong-portal/lnlyh/familysignin/sign?actNo=sign01&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRw0u3qUgTe4pwj03bFVwkCsxnDrzWYNzlCKu3hk7e6vY8JfIWGR1P3ZoeG4eBIdNKa99v0GatwcVYF_UALM1isxxMM_A6G1j1kGwvVC4R4uk-YZX-iYqUqK8mcLSLOCv93vIQ5-S_osBqVFkBR_LPn54oMGx2-QPwU6FvBo7lfNU"\
           f"&_={timestamp()}"
     h1 = {
-        "Cookie": "HDJSESSION=ZDM3MGM0ZmYtNWUyZi00ODUxLTllZjgtNmZmMDY4Mzg5NGVh; LYH_HD_ORTAL=230_5012|ZMnz0|ZMnzy; LYH_EDGE=229_5024|ZMnzz|ZMnzx; LYH_PORTAL=226_5033|ZMnzq|ZMnzT",
-        "Referer": "https://lyh.lncmcc.com/huodong-portal/lnlyh/static/html/familySign/signIn.html?actNo=sign01&pSource=JGG%2C2%2C2-3&sourceAdvertPosAr=xcx_index&_s=xcx&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRO0EMSMyTeUWN67CYn-Pq4sxnDrzWYNzlR_xKWTCyr-BrZ9YXNtMUyDgr08UUgkWw88gjRN32ZId3zycqf2PP0OdBfjsHysw4EUxQtCDbDOQ-t1kMwIPFpeHLb6z3DccaOAppo_OWR5Wk8qf1_2NBkkIZYjHocw3W6heL00QpjzQ&uid=13378e9d313c35247235d239a0cd10ef&oid=86cdd5cc99a3692e1fa8c19a6a8cb906a278904974c987359aa9903590b3493d&cmSessionId=258afe69cca39a0466d1a8023303d2ad",
-        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Cookie": "HDJSESSION=MzY1MDYxZjYtNDI2NC00YWU2LWEyMTMtNTQ0ZGEzMzE0Mjli; LYH_PORTAL=224_5036|ZOB4R|ZOB3a; LYH_HD_ORTAL=230_5014|ZOB3S|ZOB3R",
+        "Referer": "https://lyh.lncmcc.com/huodong-portal/lnlyh/static/html/familySign/signIn.html?actNo=sign01&pSource=JGG%2C2%2C2-3&sourceAdvertPosAr=xcx_index&_s=xcx&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRw0u3qUgTe4pwj03bFVwkCsxnDrzWYNzlCKu3hk7e6vY8JfIWGR1P3ZoeG4eBIdNKa99v0GatwcVYF_UALM1isxxMM_A6G1j1kGwvVC4R4uk-YZX-iYqUqK8mcLSLOCv93vIQ5-S_osBqVFkBR_LPn54oMGx2-QPwU6FvBo7lfNU&uid=13378e9d313c35247235d239a0cd10ef&oid=86cdd5cc99a3692e1fa8c19a6a8cb906a278904974c987359aa9903590b3493d&cmSessionId=67f5e3d5dfa8138a4d110af21200fca0",
+         "Accept": "application/json, text/javascript, */*; q=0.01",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.29(0x18001d38) NetType/WIFI Language/en miniProgram/wx7b8d2f8c69ac139e",
     }
 
