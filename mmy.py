@@ -4,6 +4,8 @@
 # @email : buzhi985@qq.com
 # @file : mmy.py
 # @software: pycharm
+# cron: 50 8 * * *
+# new Env('慢慢游社区');
 import requests
 """
 慢慢游社区签到，待明天测试CK有效期 8.17

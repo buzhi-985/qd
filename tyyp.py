@@ -4,21 +4,18 @@
 # @email : buzhi985@qq.com
 # @file : tyyp.py
 # @software: pycharm
+# 账号密码用@隔开 tyypCK
+# cron: 50 6 * * *
+# new Env('天翼云盘');
 import time
 import re
 import json
 import base64
 import hashlib
-# from urllib import parse
-import urllib.parse, hmac
 from os import environ
-
 import rsa
 import requests
-import random
-# 账号密码用@隔开 tyypCK
-# cron: 50 6 * * *
-# new Env('天翼云盘');
+
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 
 B64MAP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
