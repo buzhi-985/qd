@@ -34,6 +34,7 @@ def qd():
     print(rep)
 
 def test():
+    # 4K社区签到没有返回信息
     url = "http://www.4ktt.com/home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1692411632"
     head = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
@@ -47,5 +48,5 @@ def test():
     print(text)
 
 if __name__ == '__main__':
-    # test()
+    test()
     qd()
