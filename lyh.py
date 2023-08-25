@@ -104,9 +104,29 @@ def test():
          "Accept": "application/json, text/javascript, */*; q=0.01",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.29(0x18001d38) NetType/WIFI Language/en miniProgram/wx7b8d2f8c69ac139e",
     }
-
     res = req.get(url, headers=h1).json()
     print(res)
+    # 领签到奖励
+    url2 = "https://lyh.lncmcc.com/huodong-portal/lnlyh/familysignin/queryUserPrizeList?actNo=sign01&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRw0u3qUgTe4pwj03bFVwkCsxnDrzWYNzlCKu3hk7e6vY8JfIWGR1P3ZoeG4eBIdNKa99v0GatwcVYF_UALM1isxxMM_A6G1j1kGwvVC4R4uk-YZX-iYqUqK8mcLSLOCv93vIQ5-S_osBqVFkBR_LPn54oMGx2-QPwU6FvBo7lfNU&" \
+           "currentPage=1" \
+           "&pageSize=10&isReceive=1" \
+           f"&_={timestamp()}"
+    res = req.get(url2, headers=h1).json()
+    # print(res)
+    datal = res['body']['dataList']
+    for da in datal:
+        prizeLogId = da['_id']
+        prizeId = da['prizeId']
+        url3 = "https://lyh.lncmcc.com/huodong-portal/lnlyh/familysignin/prizeLqKq?actNo=sign01" \
+               f"&prizeLogId={prizeLogId}" \
+               f"&prizeId={prizeId}" \
+               "&familyId=&type=1" \
+               f"&thirdPrizeId={da['thirdPrizeId']}" \
+               "&wechatParams=AsPVTE1iK8WAQQk0MiTxn5togifBJHkCQmidBf1qq0LbdKOXhpRxejihE51yOW0O8I3Lnn-TkjsGrtcy0YQkEbMH8-HZLsClP7oMixcKU8jFXpBGgdHGINybW_Zv11kCCvTZJ5oWIe8_PcjXLAckSiCCIe6LVLUQNUEAFl7cZXnvMNgRIT_vZ7_bm8A2muekBZtBGoq-Eq-n3jDQWrDJnJH2Ziv0XKzRw0u3qUgTe4pwj03bFVwkCsxnDrzWYNzlCKu3hk7e6vY8JfIWGR1P3ZoeG4eBIdNKa99v0GatwcVYF_UALM1isxxMM_A6G1j1kGwvVC4R4uk-YZX-iYqUqK8mcLSLOCv93vIQ5-S_osBqVFkBR_LPn54oMGx2-QPwU6FvBo7lfNU&shopId=" \
+               f"&_={timestamp()}"
+        res = req.get(url3, headers=h1).json()
+        if res['code']=='0':
+            print(f"{da['prizeName']}兑换成功")
 
 
 if __name__ == '__main__':
