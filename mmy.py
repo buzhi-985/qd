@@ -4,7 +4,7 @@
 # @email : buzhi985@qq.com
 # @file : mmy.py
 # @software: pycharm
-# cron: 50 8 * * *
+# cron: 20 8 * * *
 # new Env('慢慢游社区');
 import requests
 """
@@ -47,6 +47,36 @@ def test():
     text = requests.get(url, headers=head).text
     print(text)
 
+def kk():
+    # https://www.4khdr.cn/ 没有返回信息
+    url = 'https://www.4khdr.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=c05e07a0&format=empty&inajax=1&ajaxtarget='
+    head = {
+        "accept-encoding": "gzip, deflate, br",
+        'accept-language': 'zh-CN,zh;q=0.9',
+        'cookie': 'hvLw_2132_saltkey=dGd1iD8x; hvLw_2132_lastvisit=1692952888; hvLw_2132_visitedfid=2; _clck=11r8e9m|2|feg|0|1332; PPA_CI=3c63cfc6eeda54a960707df142950f8f; hvLw_2132_st_t=0%7C1692956726%7C3323ef858ee8bc98d988a608ce68d81a; hvLw_2132_forum_lastvisit=D_2_1692956726; hvLw_2132_sendmail=1; hvLw_2132_seccodecS=5446.f228d5d7c054106ddb; hvLw_2132_ulastactivity=1692972531%7C0; hvLw_2132_auth=1e74bz6M%2FEPYUVX5Jg7xBJz6NI6JF4thjEQ0CegdbmqcWTMwQCLAgOrGsyBa1ZdqRGl6f5ooF8knaa9VL3eufSDhtfY; hvLw_2132_sid=0; hvLw_2132_checkpm=1; hvLw_2132_noticeTitle=1; hvLw_2132_lastact=1692972535%09plugin.php%09; _clsk=xhy88e|1692972538747|5|1|w.clarity.ms/collect',
+        'referer': 'https://www.4khdr.cn/k_misign-sign.html',
+        'user-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    }
+    text = requests.get(url, headers=head).text
+    print(text)
+
+def yy():
+    url = "https://www.yingyinwu.net/sg_sign.htm"
+    headers={
+        "accept": "text/plain, */*; q=0.01",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN,zh;q=0.9",
+        "content-length": "0",
+        "cookie": "bbs_sid=p2emal3cq6bmm524cnfa1qdo5b; Hm_lvt_89f24e9c1dd236ab5ca51664aaff55d2=1692955284; _ga=GA1.1.852138999.1692955285; PPA_CI=a03b646336a986cc08317ded084d9252; bbs_token=Vz1wOFGFFPIMDtNG_2Br0DNjfFPw8ibmrr9WRb2I6H6YNGqpyAcPqGNcG_2BMopgy6cePYrpFjv7pET_2BPGQhauEHuEA91O8_3D; _ga_TFZGBP72RB=GS1.1.1692970980.2.1.1692972948.0.0.0; Hm_lpvt_89f24e9c1dd236ab5ca51664aaff55d2=1692972948",
+        "origin": "https://www.yingyinwu.net",
+        "referer": "https://www.yingyinwu.net/",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    }
+    rep = requests.post(url, headers=headers).text
+    print(rep)
+
 if __name__ == '__main__':
     test()
     qd()
+    yy()
+    kk()

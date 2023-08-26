@@ -4,7 +4,7 @@
 # @email : buzhi985@qq.com
 # @file : 交汇点新闻.py
 # @software: pycharm
-# cron: 30 6 * * *
+# cron: 30 6,15 * * *
 # new Env('交汇点新闻');
 
 import time
